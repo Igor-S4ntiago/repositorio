@@ -57,7 +57,7 @@ mysql -u SEU\_USUARIO -p < sql/03\_consultas.sql
 ```
 
 Se o banco `distribuidora\_bebidas` já existir de uma execução anterior,
-apague-o antes:
+apague:
 
 ```sql
 DROP DATABASE IF EXISTS distribuidora\_bebidas;
