@@ -29,7 +29,7 @@ CREATE TABLE pessoa (
 -- =========================================================
 CREATE TABLE cliente (
     pessoa_idpessoa INT NOT NULL,
-    endereco VARCHAR(200),
+    endereco VARCHAR(200) NOT NULL,
     data_cadastro DATETIME NOT NULL,
 
     CONSTRAINT pk_cliente PRIMARY KEY (pessoa_idpessoa),
@@ -49,7 +49,7 @@ CREATE TABLE funcionario (
     pessoa_idpessoa INT NOT NULL,
     cargo VARCHAR(50) NOT NULL,
     data_admissao DATE NOT NULL,
-    ativo TINYINT NOT NULL,
+    ativo BOOLEAN NOT NULL DEFAULT TRUE,
     idsupervisor INT,
 
     CONSTRAINT pk_funcionario
