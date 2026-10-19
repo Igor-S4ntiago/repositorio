@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>br.ucb</groupId>
+  <artifactId>distribuidora-app</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <name>Distribuidora de Bebidas - Aplicacao</name>
+
+  <properties>
+    <maven.compiler.release>21</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- Classe principal para o Run da IDE.
+
+         Ela ja esta declarada mais abaixo, no maven-shade-plugin, mas la
+         vale so para o manifesto do jar, que e gerado na fase package.
+         O botao Run do NetBeans nao chega a essa fase: ele procura esta
+         propriedade. Sem ela, a IDE abre a janela "Select Main Class for
+         Execution" sem nenhuma opcao para escolher. -->
+    <exec.mainClass>br.ucb.distribuidora.Main</exec.mainClass>
+  </properties>
+
+  <dependencies>
+    <!-- Unica dependencia externa do projeto: o driver JDBC do MySQL.
+         Nao usamos ORM: o esquema do banco e o 01_ddl.sql, escrito pela
+         equipe, e todo o SQL da aplicacao esta visivel nas classes DAO. -->
+    <dependency>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+      <version>9.1.0</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>distribuidora-app</finalName>
+    <plugins>
+      <!-- Gera um jar unico, com o driver dentro, para rodar com
+           java -jar target/distribuidora-app.jar -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.5.3</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals><goal>shade</goal></goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>br.ucb.distribuidora.Main</mainClass>
+                </transformer>
+              </transformers>
+              <createDependencyReducedPom>false</createDependencyReducedPom>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

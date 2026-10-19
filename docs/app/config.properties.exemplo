@@ -1,0 +1,13 @@
+# Copie este arquivo para config.properties e preencha com os seus dados.
+# O config.properties esta no .gitignore e nao vai para o repositorio.
+#
+# Sobre os parametros da URL:
+#   useSSL=false                 conexao local, sem certificado
+#   allowPublicKeyRetrieval=true necessario porque o MySQL 8 autentica com
+#                                caching_sha2_password; sem isto o driver
+#                                recusa a primeira conexao sem SSL
+#   serverTimezone               evita o erro de fuso na leitura de DATETIME
+
+db.url=jdbc:mysql://localhost:3306/distribuidora_bebidas?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Sao_Paulo
+db.usuario=root
+db.senha=SUA_SENHA

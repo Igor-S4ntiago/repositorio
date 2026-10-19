@@ -1,0 +1,15 @@
+# Credenciais reais do banco: nunca vao para o repositorio.
+# O repositorio versiona apenas o config.properties.exemplo.
+config.properties
+
+# Build
+target/
+*.class
+
+# IDE
+.idea/
+.vscode/
+*.iml
+.settings/
+.project
+.classpath

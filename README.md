@@ -164,4 +164,3 @@ e pelo funcionamento do que foi entregue.
 As ferramentas foram empregadas como instrumento de produtividade e
 aprendizado, sem substituir a compreensão do conteúdo da disciplina, que
 permanece sendo de responsabilidade da equipe.
-[README.md](https://github.com/user-attachments/files/33644884/README.md)
